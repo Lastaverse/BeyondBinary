@@ -360,6 +360,12 @@
     transform: translateY(0);
   }
 
+  /* Sticky sidebar head — desktop only */
+  .sticky-head {
+    position: sticky;
+    top: 8rem;
+  }
+
   /* Section 1 — The Struggle */
   .section-struggle {
     background: var(--cream);
@@ -370,11 +376,6 @@
     grid-template-columns: 1fr 1.6fr;
     gap: 5rem;
     align-items: start;
-  }
-
-  .section-struggle .sticky-head {
-    position: sticky;
-    top: 8rem;
   }
 
   .section-number {
@@ -796,20 +797,96 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
+    /* Hero */
     .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 7rem 2rem 4rem; }
-    .hero-right { padding: 3rem 2rem 4rem; min-height: 50vh; }
+    .hero-left { padding: 7rem 1.5rem 4rem; }
+    .hero-right { padding: 3rem 1.5rem 4rem; min-height: 50vh; }
+    .scroll-cue { display: none; }
+
+    /* Nav — prevent text overflow on small screens */
+    nav { padding: 0.9rem 1.2rem; gap: 0.5rem; flex-wrap: wrap; }
+    .nav-tag { font-size: 0.58rem; letter-spacing: 0.12em; }
+
+    /* Containers */
+    .container { padding: 0 1.2rem; }
+    .container-narrow { padding: 0 1.2rem; }
+
+    /* Story sections — single column, NO sticky */
     .section-struggle .inner,
     .section-breakthrough .inner,
-    .section-impact .inner { grid-template-columns: 1fr; gap: 2rem; }
+    .section-impact .inner {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* ALL sticky heads must be static on mobile — including breakthrough */
+    .sticky-head,
     .section-struggle .sticky-head,
-    .section-impact .sticky-head { position: static; }
+    .section-breakthrough .sticky-head,
+    .section-impact .sticky-head,
+    [style*="position: sticky"],
+    [style*="position:sticky"] {
+      position: static !important;
+      top: auto !important;
+    }
+
+    /* Reorder: on mobile show heading first, then body text */
+    .section-struggle .inner { flex-direction: column; }
+    .section-breakthrough .inner { flex-direction: column-reverse; }
+    .section-impact .inner { flex-direction: column; }
+
+    /* Section numbers/titles tighten up */
+    .section-number { font-size: 3.5rem; }
+    .section-title { font-size: 1.6rem; }
+    .section-purpose { font-size: 0.78rem; }
+
+    /* Pull quotes */
+    .pull-quote { padding: 2rem 1.5rem; }
+    .pull-quote p { font-size: 1.1rem; }
+
+    /* Feeling tags */
+    .feeling-tags { margin-top: 1rem !important; margin-bottom: 0.5rem; }
+
+    /* Relevance grid */
     .relevance-grid { grid-template-columns: 1fr; }
-    nav { padding: 1rem 1.5rem; }
-    .container { padding: 0 1.5rem; }
+
+    /* Interview card */
     .interview-card { grid-template-columns: 1fr; gap: 1.5rem; }
-    footer { flex-direction: column; text-align: center; }
+
+    /* Ethics box */
+    .ethics-box { padding: 2rem 1.5rem; }
+
+    /* Footer */
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
     footer .footer-meta { text-align: center; }
+
+    /* Story section padding */
+    .story-section { padding: 3rem 0; }
+    .intro-section { padding: 5rem 0 3rem; }
+    .ornament-divider { margin: 3rem 0; }
+
+    /* Intro text */
+    .intro-pull { font-size: 1.3rem; padding-left: 1.2rem; }
+    .intro-text { font-size: 0.95rem; }
+
+    /* Body text */
+    .body-text { font-size: 0.95rem; line-height: 1.85; }
+
+    /* Hero title */
+    .hero-title { font-size: clamp(2.4rem, 9vw, 3.5rem); }
+    .hero-meta { flex-wrap: wrap; gap: 1.2rem; }
+  }
+
+  @media (max-width: 480px) {
+    nav .nav-tag { display: none; }
+    .hero-left { padding: 6rem 1.2rem 3rem; }
+    .pull-quote { padding: 1.5rem 1.2rem; }
+    .relevance-card { padding: 1.8rem 1.5rem; }
+    .section-number { font-size: 2.8rem; }
+    .finale { padding: 6rem 0; }
+    .interview-section { padding: 4rem 0; }
+    .relevance-section { padding: 4rem 0; }
   }
 </style>
 </head>
@@ -935,7 +1012,7 @@
         </p>
       </div>
 
-      <div class="sticky-head" style="position: sticky; top: 8rem;">
+
         <div class="section-number">02</div>
         <div class="section-label">Body</div>
         <h2 class="section-title">The Break&shy;through</h2>
