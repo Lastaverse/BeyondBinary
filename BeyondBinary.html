@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond Binary — A Young Filipina's Journey</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #f5e6e0;
+    --rose: #c9756c;
+    --deep: #2d1f1a;
+    --ink: #3d2c27;
+    --sand: #ede0d4;
+    --muted: #8a6f68;
+    --cream: #fdf6f0;
+    --gold: #c49a6c;
+    --lavender: #b8a9c9;
+    --soft-green: #a8bba3;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── PROGRESS BAR ── */
+  #progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--rose), var(--lavender));
+    z-index: 1000;
+    transition: width 0.1s linear;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 3px; left: 0; right: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(253, 246, 240, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 117, 108, 0.15);
+  }
+
+  nav .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--rose);
+    letter-spacing: 0.02em;
+  }
+
+  nav .nav-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--deep);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 4rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 70%, rgba(201, 117, 108, 0.3) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(184, 169, 201, 0.2) 0%, transparent 50%);
+  }
+
+  .hero-left::after {
+    content: '◎';
+    position: absolute;
+    top: 6rem; right: 4rem;
+    font-size: 8rem;
+    color: rgba(201, 117, 108, 0.12);
+    line-height: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: var(--rose);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: #fff;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.55);
+    max-width: 28rem;
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+  }
+
+  .hero-meta-item {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 0.8rem;
+  }
+
+  .hero-meta-item .label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-meta-item .value {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+    font-weight: 400;
+  }
+
+  .hero-right {
+    background: var(--blush);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 70% 30%, rgba(184, 169, 201, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(168, 187, 163, 0.3) 0%, transparent 45%);
+  }
+
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .hero-ornament {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(7rem, 15vw, 13rem);
+    font-style: italic;
+    color: rgba(201, 117, 108, 0.12);
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .hero-quote-card {
+    background: rgba(253, 246, 240, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(201, 117, 108, 0.2);
+    border-radius: 2px;
+    padding: 3rem;
+    max-width: 22rem;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(45, 31, 26, 0.08);
+  }
+
+  .hero-quote-card::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    color: var(--rose);
+    opacity: 0.3;
+    position: absolute;
+    top: -1.5rem;
+    left: 1.5rem;
+    line-height: 1;
+  }
+
+  .hero-quote-text {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--deep);
+  }
+
+  .hero-quote-attr {
+    margin-top: 1.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── SCROLL CUE ── */
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: bounce 2s ease-in-out infinite;
+    z-index: 2;
+  }
+
+  .scroll-cue svg { width: 1.2rem; opacity: 0.6; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .container-narrow {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 1.5rem;
+    height: 1px;
+    background: var(--rose);
+  }
+
+  /* ── NUT GRAPH / INTRO ── */
+  .intro-section {
+    padding: 7rem 0 5rem;
+    background: var(--cream);
+  }
+
+  .intro-pull {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--deep);
+    border-left: 3px solid var(--rose);
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .intro-text {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--ink);
+  }
+
+  .intro-text + .intro-text {
+    margin-top: 1.2rem;
+  }
+
+  /* ── DIVIDER ── */
+  .ornament-divider {
+    text-align: center;
+    margin: 5rem 0;
+    color: var(--rose);
+    opacity: 0.4;
+    font-size: 1.2rem;
+    letter-spacing: 1em;
+  }
+
+  /* ── BODY SECTIONS ── */
+  .story-section {
+    padding: 5rem 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .story-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Section 1 — The Struggle */
+  .section-struggle {
+    background: var(--cream);
+  }
+
+  .section-struggle .inner {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .section-struggle .sticky-head {
+    position: sticky;
+    top: 8rem;
+  }
+
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(201, 117, 108, 0.12);
+    line-height: 1;
+    margin-bottom: -1rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--deep);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-purpose {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    font-style: italic;
+    border-left: 2px solid var(--sand);
+    padding-left: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .body-text {
+    font-size: 1rem;
+    line-height: 1.95;
+    color: var(--ink);
+  }
+
+  .body-text + .body-text {
+    margin-top: 1.5rem;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    background: var(--deep);
+    color: #fff;
+    padding: 3rem;
+    margin: 2.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 10rem;
+    color: rgba(201, 117, 108, 0.15);
+    position: absolute;
+    top: -2rem;
+    left: 1rem;
+    line-height: 1;
+  }
+
+  .pull-quote p {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    position: relative;
+  }
+
+  .pull-quote cite {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    font-style: normal;
+    position: relative;
+  }
+
+  /* Section 2 — The Breakthrough */
+  .section-breakthrough {
+    background: var(--sand);
+    padding: 5rem 0;
+  }
+
+  .section-breakthrough .inner {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* Color swatch element */
+  .feeling-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 2rem 0;
+  }
+
+  .feeling-tag {
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+  }
+
+  .tag-rose { background: rgba(201,117,108,0.12); color: var(--rose); border: 1px solid rgba(201,117,108,0.3); }
+  .tag-lavender { background: rgba(184,169,201,0.15); color: #7a6b8a; border: 1px solid rgba(184,169,201,0.4); }
+  .tag-green { background: rgba(168,187,163,0.15); color: #5a7555; border: 1px solid rgba(168,187,163,0.4); }
+  .tag-gold { background: rgba(196,154,108,0.12); color: #8a6a3a; border: 1px solid rgba(196,154,108,0.3); }
+
+  /* Section 3 — The Impact */
+  .section-impact {
+    background: var(--cream);
+  }
+
+  .section-impact .inner {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* ── FINAL MESSAGE ── */
+  .finale {
+    background: var(--deep);
+    padding: 9rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .finale::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(201,117,108,0.2) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 40%, rgba(184,169,201,0.15) 0%, transparent 50%);
+  }
+
+  .finale-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .finale-message {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    font-weight: 700;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.35;
+    max-width: 36rem;
+    margin: 0 auto 2rem;
+    position: relative;
+  }
+
+  .finale-message em {
+    color: var(--rose);
+    font-style: normal;
+  }
+
+  .finale-sub {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.05em;
+    position: relative;
+  }
+
+  /* ── INTERVIEW CARD ── */
+  .interview-section {
+    padding: 6rem 0;
+    background: var(--blush);
+  }
+
+  .interview-card {
+    background: #fff;
+    border: 1px solid rgba(201,117,108,0.15);
+    padding: 3.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    align-items: start;
+    box-shadow: 0 4px 40px rgba(45,31,26,0.06);
+  }
+
+  .interviewee-avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose), var(--lavender));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .interviewee-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--deep);
+    margin-bottom: 0.3rem;
+  }
+
+  .interviewee-role {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .interview-questions {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .interview-questions li {
+    padding: 0.7rem 1rem;
+    background: var(--cream);
+    border-left: 2px solid var(--rose);
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+
+  /* ── RELEVANCE GRID ── */
+  .relevance-section {
+    padding: 6rem 0;
+    background: var(--cream);
+  }
+
+  .relevance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .relevance-card {
+    padding: 2.5rem;
+    border: 1px solid rgba(201,117,108,0.15);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .relevance-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(45,31,26,0.08);
+  }
+
+  .relevance-card:nth-child(1) { background: var(--blush); }
+  .relevance-card:nth-child(2) { background: rgba(184,169,201,0.1); }
+  .relevance-card:nth-child(3) { background: rgba(168,187,163,0.1); }
+
+  .relevance-card .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: rgba(45,31,26,0.06);
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+    line-height: 1;
+  }
+
+  .relevance-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--deep);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .relevance-card p {
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* ── ETHICS ── */
+  .ethics-section {
+    background: var(--sand);
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .ethics-box {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid rgba(201,117,108,0.2);
+    padding: 2.5rem 4rem;
+    max-width: 38rem;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .ethics-box strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--deep);
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.7);
+  }
+
+  footer .footer-meta {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3);
+    text-align: right;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-eyebrow { animation-delay: 0.2s; }
+  .hero-title   { animation-delay: 0.4s; }
+  .hero-subtitle{ animation-delay: 0.6s; }
+  .hero-meta    { animation-delay: 0.8s; }
+  .hero-quote-card { animation: fadeUp 1s 0.6s ease both; }
+
+  /* ── PHOTO STYLES ── */
+  .hero-photo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    object-position: top center;
+    opacity: 0.55;
+  }
+
+  .hero-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(45,31,26,0.3) 0%, transparent 60%),
+                linear-gradient(to top, rgba(45,31,26,0.5) 0%, transparent 50%);
+  }
+
+  .pull-quote-photo {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 1.5rem;
+    filter: grayscale(20%);
+  }
+
+  .section-photo {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .video-wrapper {
+    width: 100%;
+    background: var(--deep);
+    border: 1px solid rgba(201,117,108,0.2);
+    box-shadow: 0 4px 40px rgba(45,31,26,0.1);
+    overflow: hidden;
+  }
+
+  .video-wrapper video {
+    width: 100%;
+    display: block;
+    max-height: 70vh;
+  }
+
+  .video-caption {
+    padding: 1.2rem 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 7rem 2rem 4rem; }
+    .hero-right { padding: 3rem 2rem 4rem; min-height: 50vh; }
+    .section-struggle .inner,
+    .section-breakthrough .inner,
+    .section-impact .inner { grid-template-columns: 1fr; gap: 2rem; }
+    .section-struggle .sticky-head,
+    .section-impact .sticky-head { position: static; }
+    .relevance-grid { grid-template-columns: 1fr; }
+    nav { padding: 1rem 1.5rem; }
+    .container { padding: 0 1.5rem; }
+    .interview-card { grid-template-columns: 1fr; gap: 1.5rem; }
+    footer { flex-direction: column; text-align: center; }
+    footer .footer-meta { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav>
+  <span class="nav-brand">Beyond Binary</span>
+  <span class="nav-tag">MO-SS086 · Gender and Society · Terminal Assessment</span>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Terminal Assessment</div>
+    <h1 class="hero-title">Beyond<br><em>Binary</em></h1>
+    <p class="hero-subtitle">A young Filipina's journey of questioning gender identity through love and self-discovery — in the quiet spaces where traditional expectations meet an honest heart.</p>
+
+  </div>
+
+  <div class="hero-right" style="padding:0; position:relative;">
+    <img src="Dana1.jpg" alt="Dana" class="hero-photo">
+    <div class="hero-photo-overlay"></div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ── INTRO / NUT GRAPH ── -->
+<section class="intro-section">
+  <div class="container-narrow">
+    <div class="section-label">Nut Graph</div>
+    <div class="intro-pull">
+      This is the story of a quiet question asked in a lamp-lit bedroom — and the gentle courage it takes to keep asking it.
+    </div>
+    <p class="intro-text">
+      Dana is 19 years old, thoughtful by nature, and studying in a city where life moves quickly but self-reflection demands stillness. She has always felt something unnamed beneath the surface — a soft but persistent discomfort with the label she was given at birth: <em>woman</em>. Not a dramatic crisis, not a declaration — just a question, growing louder with every journal entry.
+    </p>
+    <p class="intro-text">
+      This story follows her introspective journey as she explores that question alongside something equally new: her first romantic relationship with a girlfriend. Together, these two threads — gender identity and love — weave a portrait of self-discovery unfolding in real time, inside a conservative Filipino family where such conversations rarely happen aloud.
+    </p>
+    <p class="intro-text">
+      It matters because Dana is not alone. Across the Philippines, young people are navigating the intersection of who they are and who their families, faith, and culture expect them to be. Her story is a window into that invisible, intimate process.
+    </p>
+  </div>
+</section>
+
+<div class="container-narrow">
+  <div class="ornament-divider">· · ·</div>
+</div>
+
+<!-- ── SECTION 1: THE STRUGGLE ── -->
+<section class="story-section section-struggle container" style="padding-top: 0;">
+  <div class="inner">
+    <div class="sticky-head">
+      <div class="section-number">01</div>
+      <div class="section-label">Body</div>
+      <h2 class="section-title">The<br>Struggle</h2>
+      <p class="section-purpose">Shows the internal weight of traditional expectations and how they press against Dana's sense of self.</p>
+      <div class="feeling-tags" style="margin-top: 2rem;">
+        <span class="feeling-tag tag-rose">Discomfort</span>
+        <span class="feeling-tag tag-lavender">Confusion</span>
+        <span class="feeling-tag tag-gold">Silence</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="body-text">
+        Dana's mornings begin with rituals she has performed for years without question: the way she ties her hair, the clothes laid out the night before, the reflexive greeting she gives her mother — <em>Magandang umaga, Ma</em> — in a voice that sounds like hers but sometimes feels borrowed.
+      </p>
+      <p class="body-text">
+        It was not until she turned 18 that the question sharpened. A classroom discussion on SOGIE rights — the first of its kind she had encountered — introduced language she had no name for. Gender identity. Non-binary. Genderqueer. She wrote the words in the margins of her notebook and spent three nights reading about them alone in her room.
+      </p>
+
+      <div class="pull-quote">
+        <img src="Dana2.jpg" alt="Dana" class="pull-quote-photo">
+        <p>"I didn't feel wrong, exactly. I just felt like I was wearing clothes that almost fit. Close enough that no one else could see — but I could feel it every day."</p>
+        <cite>— Dana</cite>
+      </div>
+
+      <p class="body-text">
+        At home, gender is not a conversation — it is a given. Her father expects her to be gracious and soft-spoken. Her mother still calls her <em>anak na babae</em> with a warmth that Dana does not want to lose. These are not villains in her story; they are people she loves. That is precisely what makes the questioning so delicate, so slow.
+      </p>
+      <p class="body-text">
+        She describes her daily life as a kind of double consciousness: the Dana who shows up to family dinners, who laughs at the right moments, who says <em>oo po</em> to questions she has not fully answered in her own heart — and the Dana who opens her journal at midnight and writes questions she cannot say aloud.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="container-narrow">
+  <div class="ornament-divider">· · ·</div>
+</div>
+
+<!-- ── SECTION 2: THE BREAKTHROUGH ── -->
+<section class="story-section section-breakthrough">
+  <div class="container">
+    <div class="inner">
+      <div>
+        <p class="body-text">
+          She met her girlfriend in a group chat for a school project. What began as shared notes and late-night voice messages became something neither of them had planned for. For Dana, falling in love with a woman did not resolve her questions about gender — it deepened them, beautifully.
+        </p>
+        <p class="body-text">
+          "Being with her made me realize I had always been looking outward for who I was supposed to be," Dana says. "She never asked me to be anything. That was the first time I felt like I could just… sit with my questions without needing answers right away."
+        </p>
+
+        <div class="pull-quote">
+          <p>"She never asked me to be anything. That was the first time I felt I could sit with my questions without needing answers right away."</p>
+          <cite>— Dana, on her relationship</cite>
+        </div>
+
+        <p class="body-text">
+          Journaling became Dana's primary tool for processing. Not as a record of events, but as a conversation with herself — uncensored, unhurried. She writes in a mix of Filipino and English, the way her thoughts actually form, not the way she speaks to others.
+        </p>
+        <p class="body-text">
+          She also found quiet solidarity among close friends who hold similar questions about identity. No formal support group — just a group chat, late-night calls, and the tacit understanding that some conversations are safer in that space than anywhere else.
+        </p>
+      </div>
+
+      <div class="sticky-head" style="position: sticky; top: 8rem;">
+        <div class="section-number">02</div>
+        <div class="section-label">Body</div>
+        <h2 class="section-title">The Break&shy;through</h2>
+        <p class="section-purpose">Reveals how love and safe spaces help Dana understand herself — not by providing answers, but by making the questions feel safe to hold.</p>
+        <img src="Dana4.jpg" alt="Dana" class="section-photo" style="margin-top:2rem;">
+        <div class="feeling-tags" style="margin-top: 1rem;">
+          <span class="feeling-tag tag-rose">Love</span>
+          <span class="feeling-tag tag-lavender">Reflection</span>
+          <span class="feeling-tag tag-green">Safety</span>
+          <span class="feeling-tag tag-gold">Honesty</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container-narrow">
+  <div class="ornament-divider">· · ·</div>
+</div>
+
+<!-- ── SECTION 3: THE IMPACT ── -->
+<section class="story-section section-impact container" style="padding-top: 0;">
+  <div class="inner">
+    <div class="sticky-head" style="position: sticky; top: 8rem;">
+      <div class="section-number">03</div>
+      <div class="section-label">Body</div>
+      <h2 class="section-title">The<br>Impact</h2>
+      <p class="section-purpose">Highlights growth, resilience, and the quiet strength found in choosing authenticity — even without resolution.</p>
+      <div class="feeling-tags" style="margin-top: 2rem;">
+        <span class="feeling-tag tag-green">Resilience</span>
+        <span class="feeling-tag tag-lavender">Growth</span>
+        <span class="feeling-tag tag-rose">Courage</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="body-text">
+        Dana has not come out to her parents. She may not, for a long time — or ever, in the way that word implies a single definitive moment. What she has done is quieter and, she believes, more honest: she has stopped performing certainty she does not feel.
+      </p>
+      <p class="body-text">
+        Small acts of courage look like this: answering "I'm still figuring it out" when a relative asks about her future. Wearing the clothes she feels comfortable in, not the ones that signal femininity most legibly. Letting herself be in love without explaining the nature of that love to people who haven't earned that conversation.
+      </p>
+
+      <div class="pull-quote">
+        <img src="Dana3.jpg" alt="Dana" class="pull-quote-photo">
+        <p>"I used to think I had to have an answer before I could be okay. Now I think the question itself is a kind of home. Somewhere I actually live."</p>
+        <cite>— Dana</cite>
+      </div>
+
+      <p class="body-text">
+        She hopes, one day, that the conversation in her family becomes possible — not because she needs their approval to be herself, but because she loves them and wants to be fully known by them. For now, that hope lives alongside the uncertainty, and she has made peace with that coexistence.
+      </p>
+      <p class="body-text">
+        To others who are somewhere in the same questioning, Dana offers not a roadmap but a reassurance: "You don't have to arrive anywhere to be valid. The asking is already something brave."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── INTERVIEW VIDEO ── -->
+<section class="interview-section">
+  <div class="container">
+    <div class="section-label">Interview</div>
+    <h2 style="font-family:'Playfair Display',serif; font-size: 1.8rem; color: var(--deep); margin-bottom: 2.5rem;">Voice of the Story</h2>
+    <div class="video-wrapper">
+      <iframe width="100%" height="500" src="https://www.youtube.com/embed/jJU82Sfh7ho" title="Interview with Dana" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;"></iframe>
+      <div class="video-caption">Interview with Dana · MO-SS086 Gender and Society · Terminal Assessment</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RELEVANCE ── -->
+<section class="relevance-section">
+  <div class="container">
+    <div class="section-label">Relevance to Gender and Society</div>
+    <h2 style="font-family:'Playfair Display',serif; font-size: 1.8rem; color: var(--deep);">Why This Story Matters</h2>
+    <div class="relevance-grid">
+      <div class="relevance-card">
+        <h3>The Social Construction of Gender</h3>
+        <p>Dana's discomfort with the label "woman" illustrates how gender is not a fixed biological fact but a social script — one that Filipino culture writes with particular force through family, religion, and language.</p>
+        <span class="number">01</span>
+      </div>
+      <div class="relevance-card">
+        <h3>Conservative Environments & Identity Formation</h3>
+        <p>The tension between Dana's private questioning and her family's expectations shows how deeply conservative environments shape — and sometimes suppress — the formation of authentic gender and sexual identity.</p>
+        <span class="number">02</span>
+      </div>
+      <div class="relevance-card">
+        <h3>The Intersection of Gender & Sexual Orientation</h3>
+        <p>Dana's story refuses to separate gender identity from romantic experience. Her relationship with a girlfriend becomes part of the larger process of knowing herself — showing that these identities are lived together, not in isolation.</p>
+        <span class="number">03</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINALE ── -->
+<section class="finale">
+  <div class="container-narrow">
+    <p class="finale-label">Ending · Reflection</p>
+    <p class="finale-message">
+      Authenticity begins in <em>silence</em>. Every brave question brings us closer to who we truly are.
+    </p>
+    <p class="finale-sub">— The lamp is still on. The journal is still open. The question is still a home.</p>
+  </div>
+</section>
+
+<!-- ── ETHICS ── -->
+<section class="ethics-section">
+  <div class="ethics-box">
+    <strong>Interview Source & Ethical Consent</strong>
+    This feature story is based on a personal interview conducted with Dana for this academic project. She provided informed consent for her experiences and reflections to be included for educational purposes. Her participation was voluntary, and all identifying details were handled with care and respect for her privacy.
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-brand">Beyond Binary</span>
+  <div class="footer-meta">
+    MO-SS086 Gender and Society A3109<br>
+    Edward Joseph Basilonia<br>
+    Mapúa Malayan Digital College · Terminal Assessment
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    document.getElementById('progress-bar').style.width = progress + '%';
+  });
+
+  // Scroll-triggered section reveals
+  const sections = document.querySelectorAll('.story-section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
